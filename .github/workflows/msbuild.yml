@@ -37,6 +37,9 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: nuget restore ${{env.SOLUTION_FILE_PATH}}
 
+    - name: Install Google Test Adapter
+      run: nuget install GoogleTestAdapter -Version 0.18.0
+
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
@@ -45,3 +48,9 @@ jobs:
 
     - name: Run unit tests
       run: .\ARM64\${{env.BUILD_CONFIGURATION}}\TestsHojaDeTrabajo01.exe
+
+    - name: Setup VSTest Path
+      uses: darenm/Setup-VSTest@v1.2
+
+    - name: VSTest
+      run: vstestconsole.exe /TestAdapterPath:GoogleTestAdapter.0.18.0\build\_common .\ARM64\${{env.BUILD_CONFIGURATION}}\TestsHojaDeTrabajo01.exe
