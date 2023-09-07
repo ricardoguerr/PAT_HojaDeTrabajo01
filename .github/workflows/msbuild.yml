@@ -46,9 +46,6 @@ jobs:
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
       run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} /p:Platform=x86 ${{env.SOLUTION_FILE_PATH}}
 
-    - name: Run unit tests
-      run: .\ARM64\${{env.BUILD_CONFIGURATION}}\TestsHojaDeTrabajo01.exe
-
     - name: Setup VSTest Path
       uses: darenm/Setup-VSTest@v1.2
 
