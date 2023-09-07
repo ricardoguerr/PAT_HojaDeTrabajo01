@@ -12,7 +12,7 @@ using std::vector;
 using std::tuple;
 
 namespace HojaDeTrabajo01Tests {
-	
+
 	class Ejercicio04Test : public TestWithParam<tuple<int, vector<string>>> {
 	protected:
 		Ejercicio04* e04;
@@ -34,15 +34,15 @@ namespace HojaDeTrabajo01Tests {
 		static vector<tuple<int, vector<string>>> GetTestParams() {
 			vector<tuple<int, vector<string>>> params;
 
-			params.push_back(tuple<int, vector<string>>(1, vector<string>{"((()))", "(()())", "(())()", "()(())", "()()()"}));
-			params.push_back(tuple<int, vector<string>>(3, vector<string>{"()"}));
+			params.push_back(tuple<int, vector<string>>(3, vector<string>{"((()))", "(()())", "(())()", "()(())", "()()()"}));
+			params.push_back(tuple<int, vector<string>>(1, vector<string>{"()"}));
 
 			std::ifstream paramsFile("parenthesis.csv");
 			string line;
 
 			while (std::getline(paramsFile, line)) {
 				std::stringstream strStream(line);
-				
+
 				string sn;
 				std::getline(strStream, sn, ',');
 
@@ -67,9 +67,9 @@ namespace HojaDeTrabajo01Tests {
 		EXPECT_EQ(expectedResult.size(), result.size()) << "La cantidad de combinaciones de parentesis (" << result.size() << ") no coincide con la esperada (" << expectedResult.size() << ").";
 
 		std::sort(result.begin(), result.end());
-		std::sort(expectedResult.begin(), result.end());
+		std::sort(expectedResult.begin(), expectedResult.end());
 
-		for (int i = 0; i < result.size() && i < expectedResult.size(); i++) {
+		for (int i = 0; i < expectedResult.size(); i++) {
 			EXPECT_EQ(expectedResult[i], result[i]) << "Una de las combinaciones no coincide con las esperadas.";
 		}
 	}

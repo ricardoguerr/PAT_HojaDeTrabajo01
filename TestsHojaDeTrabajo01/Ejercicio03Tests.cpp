@@ -8,7 +8,7 @@ using ::testing::ValuesIn;
 using std::vector;
 
 namespace HojaDeTrabajo01Tests {
-	
+
 	class Ejercicio03Test : public TestWithParam<int> {
 	protected:
 		Ejercicio03* e03;
@@ -24,7 +24,7 @@ namespace HojaDeTrabajo01Tests {
 			e03 = nullptr;
 		}
 	};
-	
+
 	class Ejercicio03ValidPowers : public Ejercicio03Test {
 	public:
 		static vector<int> GetPowersOfTwo() {
@@ -33,7 +33,7 @@ namespace HojaDeTrabajo01Tests {
 			powers.push_back(1);
 
 			int n = 2;
-			
+
 			while (n > 0) {
 				powers.push_back(n);
 				powers.push_back(-n);
@@ -49,13 +49,13 @@ namespace HojaDeTrabajo01Tests {
 		static vector<int> GetNonPowersOfTwo() {
 			vector<int> nonPowers;
 
-			nonPowers.push_back(1);
-
 			int n = 2;
+
+			nonPowers.push_back(0);
 
 			while (n > 0) {
 				nonPowers.push_back(n + 1);
-				nonPowers.push_back(-n + 1);
+				nonPowers.push_back(-n - 1);
 				n = n * 2;
 			}
 
