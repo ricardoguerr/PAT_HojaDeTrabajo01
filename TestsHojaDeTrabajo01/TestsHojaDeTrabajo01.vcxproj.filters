@@ -15,4 +15,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="parenthesis.csv" />
+  </ItemGroup>
 </Project>
