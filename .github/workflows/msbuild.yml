@@ -44,7 +44,7 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} /p:Platform=x86 ${{env.SOLUTION_FILE_PATH}}
 
     - name: Run unit tests
       run: .\ARM64\${{env.BUILD_CONFIGURATION}}\TestsHojaDeTrabajo01.exe
@@ -53,4 +53,4 @@ jobs:
       uses: darenm/Setup-VSTest@v1.2
 
     - name: VSTest
-      run: vstestconsole.exe /TestAdapterPath:GoogleTestAdapter.0.18.0\build\_common .\ARM64\${{env.BUILD_CONFIGURATION}}\TestsHojaDeTrabajo01.exe
+      run: vstest.console.exe /TestAdapterPath:GoogleTestAdapter.0.18.0\build\_common .\Release\TestsHojaDeTrabajo01.exe
