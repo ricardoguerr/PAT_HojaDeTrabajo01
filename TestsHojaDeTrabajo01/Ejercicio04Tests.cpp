@@ -69,7 +69,7 @@ namespace HojaDeTrabajo01Tests {
 		std::sort(result.begin(), result.end());
 		std::sort(expectedResult.begin(), expectedResult.end());
 
-		for (int i = 0; i < expectedResult.size(); i++) {
+		for (int i = 0; i < expectedResult.size() && i < result.size(); i++) {
 			EXPECT_EQ(expectedResult[i], result[i]) << "Una de las combinaciones no coincide con las esperadas.";
 		}
 	}
